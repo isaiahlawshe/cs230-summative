@@ -1,0 +1,16 @@
+Campus Club Event Finder — Dataset Field Justification
+
+The events array in script.js represents a possible JSON response from a campus event service. Each object represents one event.
+
+- id: A unique numeric identifier. It can be used to distinguish events, find one event, or connect an event to a future detail page.
+- name: The event title. It can be searched by the user and sorted alphabetically.
+- organization: The club or campus group hosting the event. It can be searched or used to filter events by organizer in a future version.
+- date: The event date in YYYY-MM-DD format. It can be compared with a selected start date and sorted chronologically.
+- time: The event's start time. It can be displayed alongside the date or used for time-based sorting if stored in a consistently sortable format.
+- location: The campus location. It can be searched and could be used to group events by building.
+- category: A broad event type such as Academic, Arts, Career, Social, Service, or Sports. It can be filtered by category and used to count events in each category.
+- audience: A short description of who the event is for. It can help students decide whether an event fits them and could be used as a filter.
+- cost: The event price as a number. It can be filtered to show free events, sorted by price, and aggregated with reduce() to calculate total or average cost.
+- rsvps: The number of students who have RSVP'd. It can be sorted to show popular events and aggregated with reduce() to calculate the total RSVPs across the visible results.
+
+The interface demonstrates filter() to select events that match the current search and filter settings, map() to turn event objects into HTML cards, and reduce() to calculate the free-event count, average cost, and total RSVPs. Sorting works on a copied array so the original dataset is not modified.

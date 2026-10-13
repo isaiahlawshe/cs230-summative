@@ -1,10 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campus Club Event Finder</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
+  <header class="site-header">
+    <div class="header-content">
+      <p class="eyebrow">COE CAMPUS LIFE</p>
+      <h1>Find your next <span>campus moment.</span></h1>
+      <p class="intro">Discover club meetings, workshops, and events happening around campus.</p>
+    </div>
+  </header>
 
+  <main>
+    <section class="summary" aria-label="Event summary">
+      <article class="stat-card"><span class="stat-label">Events shown</span><strong id="event-count">0</strong></article>
+      <article class="stat-card"><span class="stat-label">Free events</span><strong id="free-count">0</strong></article>
+      <article class="stat-card"><span class="stat-label">Average cost</span><strong id="average-cost">$0.00</strong></article>
+      <article class="stat-card"><span class="stat-label">Total RSVPs</span><strong id="total-rsvps">0</strong></article>
+    </section>
+
+    <section class="finder-panel" aria-labelledby="finder-heading">
+      <div class="section-heading">
+        <div><p class="eyebrow">YOUR CAMPUS, YOUR CALL</p><h2 id="finder-heading">Explore events</h2></div>
+        <button id="reset-button" class="reset-button" type="button">Reset filters</button>
+      </div>
+      <div class="filters">
+        <label for="search-input">Search events
+          <input id="search-input" type="search" placeholder="Try music, coding, volunteering…">
+        </label>
+        <label for="category-filter">Category
+          <select id="category-filter">
+            <option value="all">All categories</option>
+            <option value="Academic">Academic</option>
+            <option value="Arts">Arts</option>
+            <option value="Career">Career</option>
+            <option value="Social">Social</option>
+            <option value="Service">Service</option>
+            <option value="Sports">Sports</option>
+          </select>
+        </label>
+        <label for="date-filter">On or after
+          <input id="date-filter" type="date">
+        </label>
+        <label for="sort-select">Sort by
+          <select id="sort-select">
+            <option value="date">Soonest first</option>
+            <option value="name">Name (A–Z)</option>
+            <option value="cost-low">Cost: low to high</option>
+            <option value="rsvps">Most popular</option>
+          </select>
+        </label>
+        <label class="checkbox-label" for="free-filter">
+          <input id="free-filter" type="checkbox">
+          Show free events only
+        </label>
+      </div>
+    </section>
+
+    <section class="results-section" aria-labelledby="results-heading">
+      <div class="results-heading">
+        <h2 id="results-heading">What's happening</h2>
+        <p id="results-message" aria-live="polite"></p>
+      </div>
+      <div id="event-list" class="event-grid"></div>
+      <p id="empty-message" class="empty-message" hidden>No events match those filters. Try changing your search.</p>
+    </section>
+  </main>
+
+  <footer><p>Made for campus life · Find something worth showing up for.</p></footer>
 </body>
+
+
+<dialog id="event-dialog" class="event-dialog">
+  <button id="close-dialog" class="close-dialog" type="button" aria-label="Close event details">×</button>
+  <p class="eyebrow">EVENT DETAILS</p>
+  <h2 id="dialog-title">Event name</h2>
+  <p id="dialog-organization" class="organization"></p>
+  <div id="dialog-details" class="event-details"></div>
+  <p id="dialog-audience" class="audience"></p>
+  <p id="dialog-rsvps"></p>
+  <button id="rsvp-button" class="rsvp-button" type="button">RSVP to this event</button>
+  <p id="rsvp-note" class="rsvp-note">Your RSVP is saved in this browser.</p>
+</dialog>
+
 </html>
